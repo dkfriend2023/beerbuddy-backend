@@ -1,4 +1,4 @@
-# Dkfriend-backend
+# BeAbuddy-backend
 
 🍻 Server-Side of BeABuddy Developed with Django
 
