@@ -93,7 +93,7 @@ class TokenRefreshView(APIView):
             SIMPLE_JWT["AUTH_COOKIE"],
             new_refresh,
             httponly=True,
-            secure=True,
+            # secure=False,
         )
         return response
 
@@ -147,7 +147,24 @@ class sms(APIView):
 # ---회원가입---
 class SignupPost(APIView):
     def post(self, request, *args, **kwargs):
+
+        phone_number = request.data.get("phone_number", None)
+        email = request.data.get("email", None)
+
+        if phone_number is None or email is None:
+            return Response({"message": "다시 입력해주세요"}, status=status.HTTP_400_BAD_REQUEST)
+
+        user1 = User.objects.filter(phone_number=phone_number).first()
+        user2 = User.objects.filter(email=email).first()
+
+        if user1 is not None:
+            return Response({"message": "이미 가입된 전화번호입니다."}, status=status.HTTP_400_BAD_REQUEST)
+
+        if user2 is not None:
+            return Response({"message": "이미 가입된 이메일입니다."}, status=status.HTTP_400_BAD_REQUEST)
+
         serializer = UserSerializer(data=request.data)
+
         if serializer.is_valid():
             user = serializer.save()
             new_refresh = RefreshToken.for_user(user)
@@ -168,7 +185,7 @@ class SignupPost(APIView):
                 SIMPLE_JWT["AUTH_COOKIE"],
                 new_refresh,
                 httponly=True,
-                secure=True,
+                # secure=False,
             )
             return response
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -232,7 +249,7 @@ class SigninPost(APIView):
                 SIMPLE_JWT["AUTH_COOKIE"],
                 new_refresh,
                 httponly=True,
-                secure=True,
+                # secure=False,
             )
             return response
         return Response(
@@ -317,7 +334,7 @@ def kakao_callback(request):
             SIMPLE_JWT["AUTH_COOKIE"],
             refresh_token,
             httponly=True,
-            secure=True,
+            # secure=True,
         )
         return response
 
@@ -349,7 +366,7 @@ def kakao_callback(request):
             SIMPLE_JWT["AUTH_COOKIE"],
             refresh_token,
             httponly=True,
-            secure=True,
+            # secure=True,
         )
         return response
 

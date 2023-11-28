@@ -50,9 +50,9 @@ class BookingPost(APIView):
 
         # 유효성 검사
         if serializer.is_valid():
-            serializer.save()
+            booking_instance = serializer.save()
 
-            title = f'[대관친구] {request.user.user_nickname} {request.data.get("time", None)} {request.data.get("date", None)} 예약 완료'
+            title = f'[대관친구] {request.user.user_nickname} {request.data.get("date", None)}{request.data.get("time", None)} 예약 완료'
             content = f"""
             예약자: {request.user.user_nickname}
             예약명: {request.data.get("meeting_name", None)}
@@ -60,7 +60,7 @@ class BookingPost(APIView):
             예약 날짜: {request.data.get("date", None)}
             예약 시간: {request.data.get("time", None)}
             예약 인원: {request.data.get("people_num", None)}
-            예약 번호: {request.data.get("book_number", None)}
+            예약 번호: {booking_instance.book_number}
             요청 사항: {request.data.get("description", None)}
             """
 
