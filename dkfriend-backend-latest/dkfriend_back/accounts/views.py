@@ -33,7 +33,7 @@ import json
 import time
 import random
 
-BASE_URL = "http://43.201.13.231/"
+BASE_URL = "https://43.201.13.231/"
 
 # --- token refresh ---
 
@@ -93,7 +93,7 @@ class TokenRefreshView(APIView):
             SIMPLE_JWT["AUTH_COOKIE"],
             new_refresh,
             httponly=True,
-            # secure=False,
+            secure=False,
         )
         return response
 
@@ -185,7 +185,7 @@ class SignupPost(APIView):
                 SIMPLE_JWT["AUTH_COOKIE"],
                 new_refresh,
                 httponly=True,
-                # secure=False,
+                secure=False,
             )
             return response
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -249,7 +249,7 @@ class SigninPost(APIView):
                 SIMPLE_JWT["AUTH_COOKIE"],
                 new_refresh,
                 httponly=True,
-                # secure=False,
+                secure=False,
             )
             return response
         return Response(
@@ -334,7 +334,7 @@ def kakao_callback(request):
             SIMPLE_JWT["AUTH_COOKIE"],
             refresh_token,
             httponly=True,
-            # secure=True,
+            secure=True,
         )
         return response
 
@@ -366,7 +366,7 @@ def kakao_callback(request):
             SIMPLE_JWT["AUTH_COOKIE"],
             refresh_token,
             httponly=True,
-            # secure=True,
+            secure=True,
         )
         return response
 
