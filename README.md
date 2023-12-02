@@ -1,4 +1,4 @@
-# Dkfriend-backend
+# BeAbuddy-backend
 
 🍻 Server-Side of BeABuddy Developed with Django
 
@@ -10,7 +10,7 @@
 
 ```
 0) 레포지토리 local에 다운 받기
-git clone https://github.com/dkfriend2023/dkfriend-backend.git
+git clone https://github.com/dkfriend2023/beerbuddy-backend.git
 
 1) 가상환경 설치
 python -m venv myvenv
