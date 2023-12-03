@@ -33,7 +33,7 @@ import json
 import time
 import random
 
-BASE_URL = "https://43.201.13.231/"
+BASE_URL = "https://beerbuddy2023.com/"
 
 # --- token refresh ---
 
@@ -114,7 +114,7 @@ class sms(APIView):
             "contentType": "COMM",
             "from": "01089744589",  # 사전에 등록해놓은 발신용 번호 입력, 타 번호 입력시 오류
             # 메세지 내용
-            "content": f"[Web 발신] <비어버디> 인증번호 : [{auth_number}] 입니다. 5분 안에 입력 바랍니다.",
+            "content": f"<비어버디> 인증번호 : [{auth_number}] 입니다. 5분 안에 입력 바랍니다.",
             # 네이버 양식에 따른 messages.to 입력
             "messages": [{"to": f"{phone_number}"}]
         }
