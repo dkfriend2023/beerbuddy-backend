@@ -165,7 +165,8 @@ REST_FRAMEWORK = {
 # HTTP 요청에 쿠키 포함
 CORS_ORIGIN_WHITELIST = (
     "http://43.201.13.231:8000", "http://localhost:3000")
-# CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
 CSRF_TRUSTED_ORIGINS = [
     "http://43.201.13.231:8000", "http://localhost:3000"]
 

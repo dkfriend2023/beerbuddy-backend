@@ -34,6 +34,7 @@ import time
 import random
 
 BASE_URL = "https://beerbuddy2023.com/"
+# BASE_URL = ""
 
 # --- token refresh ---
 
